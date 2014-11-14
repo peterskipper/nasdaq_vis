@@ -1,1 +1,12 @@
 /* custom css */
+h1 {
+    margin-left: 50px;
+}
+body {
+    padding-top: 20px;
+    font: 12px sans-serif;
+    font-weight: bold;
+}
+.container {
+    margin-top: -20px;
+}
