@@ -7,17 +7,18 @@ def get_data():
     fieldnames = ("Symbol", "Name", "lastsale", "netchange", "pctchange", "share_volume", "Nasdaq100_points")
     reader = csv.DictReader(data.splitlines(), fieldnames=fieldnames)
     reader.next()
-    result = []
+    result = {"children": []}
     for line in reader:
-        result.append({
-            "name": line["Name"],
-            "symbol": line["Symbol"],
-            "price": line["lastsale"],
-            "netchange": line["netchange"],
-            "pctchange": line["pctchange"],
-            "volume": line["share_volume"],
-            "value": line["Nasdaq100_points"]
-        })
+        if float(line["Nasdaq100_points"]) > .01:
+            result["children"].append({
+                "name": line["Name"].strip(),
+                "symbol": line["Symbol"].strip(),
+                "price": line["lastsale"].strip(),
+                "netchange": line["netchange"].strip(),
+                "pctchange": line["pctchange"].strip(),
+                "volume": line["share_volume"].strip(),
+                "value": line["Nasdaq100_points"].strip()
+            })
     return result
 
 if __name__ == "__main__":

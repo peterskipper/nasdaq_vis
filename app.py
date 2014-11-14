@@ -11,7 +11,7 @@ def index():
 
 @app.route("/data")
 def data():
-    return json.dumps(get_data())
+    return jsonify(get_data())
 
 
 if __name__ == "__main__":
